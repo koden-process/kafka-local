@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
@@ -16,6 +14,9 @@ services:
   kafka:
     image: confluentinc/cp-kafka:7.4.0
     container_name: kafka
+    networks:
+      - rekipe
+      - kapla
     ports:
       - "9092:9092"
       - "29092:29092"
@@ -51,3 +52,9 @@ volumes:
     driver: local
   kafka-logs:
     driver: local
+
+networks:
+  rekipe:
+    external: true
+  kapla:
+    external: true
