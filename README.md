@@ -1,8 +1,12 @@
 # kafka-local
 
+Il faut que les dockers qui doivent communiquer soient sur le même réseau : karned !
+
 Lancer les services  
 ```shell
 docker-compose up -d
+docker network connect karned kafka
+docker network inspect karned | grep '"Name": "kafka"' -A 5
 ```
 
 Arrêter les services  
